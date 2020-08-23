@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  solutions4theweb_cms:
+    build: .
+    container_name: authentication_microservice
+    restart: always
+
+networks:
+  default:
+    external:
+      name: server_sites_default

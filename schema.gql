@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  email: String!
+  confirmed: Boolean!
+}
+
+type YupError {
+  path: String!
+  message: String!
+}
+
+type MutationResponse {
+  status: Int!
+  errors: [YupError]!
+  payload: String
+}
+
+type Query {
+  me: User!
+}
+
+type Mutation {
+  login(password: String!, email: String!): MutationResponse!
+  refresh: String!
+  logout: Boolean!
+  register(password: String!, email: String!): MutationResponse!
+}
