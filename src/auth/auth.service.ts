@@ -109,9 +109,11 @@ export class AuthService {
       };
     }
 
+    const refresh_token = await this.getUserRefreshToken(id);
+
     const tokens = {
       access_token: await this.generateAccessToken(id),
-      refresh_token: await this.generateRefreshToken(id)
+      refresh_token: refresh_token || (await this.generateRefreshToken(id))
     };
 
     await AuthService.redisInstance.set(
