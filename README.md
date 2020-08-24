@@ -115,10 +115,6 @@ After a sucessfull login, the `payload` will contain a stringified JSON object o
 
 Your application needs to be able to validate access tokens without using this microservice. When a user makes a request with an expired access token, automatically make a request to this microservice to generate a new access token. On success, fullfill the user's original request and send them a new access token with the response. The whole process should be seemless for the user unless their refresh token has expired, in this case prompt the user to login again.
 
-```json
-refresh
-```
-
 In the HTTP headers include the following:
 
 ```json
@@ -139,13 +135,9 @@ Use the access token in your application to authorize the user.
 
 #### Logout
 
-Refresh tokens are stored in a Redis Cache. Only 1 refresh token is stored per user, when a new refresh token is generated (via the `login`mutation) it will override the value stored in the cache. Cache expiry is the same as what is set for the refresh token. When a `logout` mutation is preformed, it will delete the current entry in the cache. A limitation of this is the user can only be logged in from one device, a future update will fix this design flaw.
+Refresh tokens are stored in a Redis Cache. Cache expiry is the same as what is set for the refresh token. When a `logout` mutation is preformed, it will delete the current entry in the cache.
 
 After a user has logged out their refresh token is no longer valid; however, existing access tokens are still valid for use in your application. It is for this reason that it's recommended to set the access tokens to a short duration.
-
-```json
-logout
-```
 
 ### Queries
 
