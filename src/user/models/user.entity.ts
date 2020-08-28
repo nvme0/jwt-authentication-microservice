@@ -45,4 +45,10 @@ export class User {
 
   @Field(() => Boolean)
   confirmed: boolean;
+
+  @Field(() => Date)
+  createdAt: Date;
+
+  @Field(() => Date)
+  updatedAt: Date;
 }

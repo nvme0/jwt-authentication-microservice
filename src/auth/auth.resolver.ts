@@ -2,12 +2,12 @@ import { Resolver, Mutation, Args } from "@nestjs/graphql";
 import { UseGuards, HttpException, HttpStatus } from "@nestjs/common";
 
 import { MutationResponse } from "src/shared/models/MutationResponse.model";
-import { UserEntity } from "src/user/models/user.entity";
+import { User } from "src/user/models/user.entity";
 import { AuthService } from "./auth.service";
 import { JwtRefreshAuthGuard } from "./guards/jwt-refresh.guard";
 import { CurrentUser } from "./decorators/currentUser.decorator";
 
-@Resolver(() => UserEntity)
+@Resolver(() => User)
 export class AuthResolver {
   constructor(private authService: AuthService) {}
 
