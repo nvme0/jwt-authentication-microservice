@@ -12,4 +12,4 @@ RUN npm run build
 
 WORKDIR /jwt_authentication_microservice
 
-CMD ["npm", "start", "--", "-p", "80"]
+CMD ["npm", "run", "start:prod"]
