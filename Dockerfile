@@ -1,12 +1,15 @@
 FROM node:12.18.2
 
-ADD ./ /authentication_microservice
+ADD ./ /jwt_authentication_microservice
 
-WORKDIR /authentication_microservice
+WORKDIR /jwt_authentication_microservice
 
+# install
 RUN npm install
+
+# build application
 RUN npm run build
 
-WORKDIR /authentication_microservice
+WORKDIR /jwt_authentication_microservice
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "--", "-p", "80"]
